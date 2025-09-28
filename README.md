@@ -1,4 +1,5 @@
-"# Smart-bus-ticketing-system" 
+"# Smart-bus-ticketing-system" <img width="410" height="410" alt="QR_67546891225258931" src="https://github.com/user-attachments/assets/c9c81242-60e5-4963-90ee-8c3358ccca03" />
+
 
 
 # Smart Bus Ticketing
