@@ -1,0 +1,65 @@
+; ---------- installer.iss ----------
+#define MyAppName "Smart Bus Ticketing"
+#define MyAppVersion "1.0.1"
+#define MyAppPublisher "Sai"
+#define MyAppExeName "SmartBus.exe"
+
+[Setup]
+AppId={{6D4C0E3B-8A0D-4B7D-9E11-1234567890AB}}
+AppName={#MyAppName}
+AppVersion={#MyAppVersion}
+AppPublisher={#MyAppPublisher}
+DefaultDirName={userappdata}\SmartBus
+
+DefaultGroupName=SmartBus
+OutputDir=output
+OutputBaseFilename=SmartBus_Setup_v{#MyAppVersion}
+Compression=lzma
+SolidCompression=yes
+WizardStyle=modern
+DisableProgramGroupPage=no
+ArchitecturesInstallIn64BitMode=x64
+; (Optional) Icon
+SetupIconFile="bus.ico"
+
+
+[Languages]
+Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[Files]
+; Point SOURCE to your release folder
+Source: "dist\SmartBus.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".env";        DestDir: "{app}"; Flags: onlyifdoesntexist uninsneveruninstall
+Source: "bus.ico";     DestDir: "{app}"
+; Create runtime folders for PDFs/QRs (empty dirs ok)
+; If you want to ship a default .env always, remove 'onlyifdoesntexist'
+
+[Dirs]
+Name: "{app}\tickets"
+Name: "{app}\qrs"
+
+[Icons]
+Name: "{group}\Smart Bus";         Filename: "{app}\SmartBus.exe"; IconFilename: "{app}\bus.ico"
+Name: "{commondesktop}\Smart Bus"; Filename: "{app}\SmartBus.exe"; IconFilename: "{app}\bus.ico"; Tasks: desktopicon
+Name: "{group}\Uninstall Smart Bus"; Filename: "{uninstallexe}"
+
+
+[Tasks]
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional icons:"; Flags: unchecked
+
+[Run]
+Filename: "{app}\{#MyAppExeName}"; Description: "Launch Smart Bus now"; Flags: nowait postinstall skipifsilent
+
+
+
+---
+
+### 🚀 Push to GitHub
+```bash
+git init
+git add .
+git commit -m "Initial commit: Smart Bus Ticketing"
+git branch -M main
+git remote add origin https://github.com/Sai9876/smart-bus-ticketing.git
+git push -u origin main
+

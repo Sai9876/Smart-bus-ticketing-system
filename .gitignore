@@ -1,0 +1,21 @@
+# SmartBus ignores 
+
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual env
+.venv/
+env/
+
+# Build and installer outputs
+build/
+dist/
+*.spec
+output/
+
+# Local configs
+.env
+
